@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chroma Wave Studios - Virtual Avatar System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="header-logo">
+                <div class="logo-container">
+                    <img src="assets/images/cws-logo.svg" alt="CWS Logo" class="logo">
+                </div>
+                <h1>Chroma Wave Studios</h1>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#" class="active" data-section="avatar-creator">Create Avatar</a></li>
+                    <li><a href="#" data-section="accessory-gallery">Accessories</a></li>
+                    <li><a href="#" data-section="my-looks">My Looks</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch">
+                <input type="checkbox" id="theme-toggle" class="theme-toggle">
+                <label for="theme-toggle" class="theme-toggle-label">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <span class="toggle-ball"></span>
+                </label>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <!-- Avatar Creation Section -->
+            <section id="avatar-creator" class="app-section active">
+                <div class="section-header">
+                    <h2>Create Your Digital Twin</h2>
+                    <p>Generate a photorealistic avatar from your camera or photo upload</p>
+                </div>
+
+                <div class="avatar-creation-container">
+                    <div class="creation-tabs">
+                        <button class="tab-btn active" data-tab="camera-tab">
+                            <i class="fas fa-camera"></i> Camera
+                        </button>
+                        <button class="tab-btn" data-tab="upload-tab">
+                            <i class="fas fa-upload"></i> Upload
+                        </button>
+                    </div>
+
+                    <div class="tab-content-container">
+                        <!-- Camera Tab Content -->
+                        <div id="camera-tab" class="tab-content active">
+                            <div class="camera-container">
+                                <video id="camera-preview" autoplay playsinline></video>
+                                <div class="camera-overlay">
+                                    <div class="face-guide"></div>
+                                </div>
+                                <div class="camera-controls">
+                                    <button id="capture-btn" class="primary-btn">
+                                        <i class="fas fa-camera"></i> Capture
+                                    </button>
+                                    <button id="switch-camera-btn" class="secondary-btn">
+                                        <i class="fas fa-sync-alt"></i> Switch Camera
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Tab Content -->
+                        <div id="upload-tab" class="tab-content">
+                            <div class="upload-container">
+                                <div class="upload-area" id="upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop your image here or click to browse</p>
+                                    <span>Supports JPG, PNG (Max 10MB)</span>
+                                    <input type="file" id="file-upload" accept="image/jpeg, image/png" hidden>
+                                </div>
+                                <div class="uploaded-image-preview" id="uploaded-image-preview">
+                                    <img id="preview-img" src="" alt="">
+                                    <button id="change-image-btn" class="secondary-btn">
+                                        <i class="fas fa-redo"></i> Change Image
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="avatar-preview-container">
+                        <h3>Avatar Preview</h3>
+                        <div class="avatar-preview">
+                            <div id="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                                <p>Your avatar will appear here after processing</p>
+                            </div>
+                            <img id="avatar-result" src="" alt="">
+                        </div>
+                        <div class="action-buttons">
+                            <button id="generate-avatar-btn" class="primary-btn" disabled>
+                                <i class="fas fa-magic"></i> Generate Avatar
+                            </button>
+                            <button id="continue-to-accessories-btn" class="secondary-btn" disabled>
+                                <i class="fas fa-arrow-right"></i> Continue to Accessories
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accessory Selection Section -->
+            <section id="accessory-gallery" class="app-section">
+                <div class="section-header">
+                    <h2>Accessorize Your Avatar</h2>
+                    <p>Try on different accessories and create your perfect look</p>
+                </div>
+
+                <div class="accessory-container">
+                    <div class="accessory-categories">
+                        <button class="category-btn active" data-category="clothing">
+                            <i class="fas fa-tshirt"></i> Clothing
+                        </button>
+                        <button class="category-btn" data-category="jewelry">
+                            <i class="fas fa-gem"></i> Jewelry
+                        </button>
+                        <button class="category-btn" data-category="shoes">
+                            <i class="fas fa-shoe-prints"></i> Shoes
+                        </button>
+                        <button class="category-btn" data-category="watches">
+                            <i class="fas fa-clock"></i> Watches
+                        </button>
+                    </div>
+
+                    <div class="accessory-gallery-container">
+                        <div class="gallery-items" id="gallery-items">
+                            <!-- Accessory items will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="accessorized-avatar-container">
+                        <h3>Your Personalized Look</h3>
+                        <div class="avatar-display">
+                            <img id="accessorized-avatar" src="" alt="Your Avatar with Accessories">
+                        </div>
+                        <div class="current-outfit" id="current-outfit">
+                            <h4>Current Outfit</h4>
+                            <ul id="outfit-list">
+                                <!-- Selected accessories will be listed here -->
+                            </ul>
+                            <button id="clear-accessories-btn" class="secondary-btn">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="save-look-btn" class="primary-btn">
+                                <i class="fas fa-save"></i> Save Look
+                            </button>
+                            <button id="download-image-btn" class="secondary-btn">
+                                <i class="fas fa-download"></i> Download Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Looks Gallery Section -->
+            <section id="my-looks" class="app-section">
+                <div class="section-header">
+                    <h2>My Looks Gallery</h2>
+                    <p>View and manage your saved looks</p>
+                </div>
+
+                <div class="looks-gallery-container">
+                    <div class="looks-filters">
+                        <input type="text" id="search-looks" placeholder="Search looks...">
+                        <select id="sort-looks">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+
+                    <div class="looks-grid" id="looks-grid">
+                        <!-- Saved looks will be populated here -->
+                        <div class="no-looks-message" id="no-looks-message">
+                            <i class="fas fa-images"></i>
+                            <p>You haven't saved any looks yet. Create your first look!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Chroma Wave Studios</h3>
+                    <p>Create. Personalize. Express.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@chromawavestudios.com"><i class="fas fa-envelope"></i> info@chromawavestudios.com</a></li>
+                        <li><a href="#"><i class="fas fa-globe"></i> www.chromawavestudios.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Chroma Wave Studios. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Modals -->
+        <div id="processing-modal" class="modal">
+            <div class="modal-content">
+                <div class="processing-animation">
+                    <div class="spinner"></div>
+                </div>
+                <h3>Creating Your Avatar...</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="processing-progress"></div>
+                    </div>
+                    <p id="processing-stage">Analyzing facial features...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="save-look-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Save Your Look</h3>
+                <div class="form-group">
+                    <label for="look-name">Name your look:</label>
+                    <input type="text" id="look-name" placeholder="e.g., Casual Summer Look">
+                </div>
+                <div class="form-group">
+                    <label for="look-notes">Notes (optional):</label>
+                    <textarea id="look-notes" placeholder="Add any notes or description..."></textarea>
+                </div>
+                <div class="look-preview">
+                    <img id="look-preview-img" src="" alt="Look Preview">
+                </div>
+                <button id="confirm-save-look-btn" class="primary-btn">
+                    <i class="fas fa-save"></i> Save Look
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.19.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@1.0.2/dist/face-landmarks-detection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+    <script src="js/config.js"></script>
+    <script src="js/ui-manager.js"></script>
+    <script src="js/camera-manager.js"></script>
+    <script src="js/avatar-generator.js"></script>
+    <script src="js/accessory-manager.js"></script>
+    <script src="js/looks-manager.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
