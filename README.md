@@ -1,92 +1,92 @@
-# Chroma Wave Studios (CWS)
+# Chroma Wave Studios (CWS) - Virtual Avatar System
 
-An AI-powered virtual avatar system that creates realistic digital twins from photos or webcam and allows users to try on various accessories.
+CWS is a comprehensive virtual avatar system that creates photorealistic digital twins from webcam captures or uploaded images, allowing users to try on various accessories like clothing, jewelry, watches, and shoes.
 
-## Features
+![CWS Logo](web/assets/images/cws-logo.svg)
 
-- **Avatar Creation**: Generate photorealistic digital avatars using:
+## 🌟 Features
   - Live camera capture (OpenCV/YOLO)
-  - Uploaded images
-  
-- **Virtual Try-On**: Test various accessories on your digital twin:
-  - Clothing
+- **Avatar Creation**
+  - Live camera capture with OpenCV and YOLO
+  - Face detection and feature extraction
+  - Realistic avatar generation
   - Jewelry
-  - Shoes
-  - Watches
-  - And more
-
+- **Virtual Try-On**
+  - Multiple accessory categories: clothing, jewelry, shoes, watches
+  - Intelligently positions accessories based on body keypoints
+  - Realistic rendering and blending
 - **Realistic Rendering**: The system ensures avatars look 100% like the person, not cartoonish or animated
-
-## Technical Stack
-
-- **Backend**: Python
+- **Dual Interface**
+  - Modern JavaScript web interface with real-time processing
+  - Streamlit-based Python interface
+  - Responsive design with dark/light mode
 - **Frontend**: Streamlit UI
-- **Computer Vision**: OpenCV, YOLO for detection
+## 🛠️ Technical Stack
 - **3D Modeling**: Various libraries for realistic avatar creation
-- **Virtual Try-On**: AI-powered fitting algorithms
-
-## Usage Flow
-
-1. User provides input (webcam capture or image upload)
-2. System generates a photorealistic avatar
-3. User selects accessories to try on
+### Backend
+- **Python 3.8+**
+- **OpenCV** for image processing
+- **YOLO** for detection
+- **MediaPipe** for face and body keypoints
+- **NumPy** for numerical operations
+- **Streamlit** for Python UI
 4. System renders the avatar wearing the selected items
+### Frontend
+- **Vanilla JavaScript (ES6+)**
+- **TensorFlow.js** for client-side face detection
+- **MediaPipe.js** for pose estimation
+- **HTML5/CSS3** with a responsive design
+git clone https://github.com/SreeHarhsa/CWS.git
+## 🚀 Installation
 
-## Installation
-
+### Prerequisites
+- Python 3.8+
+- pip
+- Webcam (for live mode)
+# Install dependencies
+### Step 1: Clone the Repository
 ```bash
-# Clone the repository
 git clone https://github.com/SreeHarhsa/CWS.git
 cd CWS
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the application
-streamlit run app.py
 ```
 
-## Project Structure
+### Step 2: Install Dependencies
 
 ```
 CWS/
 ├── app.py                  # Main Streamlit application
-├── requirements.txt        # Project dependencies
+### Step 3: Run the Application
 ├── src/
-│   ├── avatar_generator/   # Avatar generation modules
-│   │   ├── __init__.py
-│   │   ├── capture.py      # Camera capture functionality
-│   │   ├── processor.py    # Image processing utilities
+# Run the combined server (Flask + Streamlit)
+python server.py
+
+```
 │   │   └── generator.py    # Avatar generation algorithms
-│   │
-│   ├── virtual_tryon/      # Virtual try-on functionality
-│   │   ├── __init__.py
+The application will open automatically in your default browser:
+- Web Interface: http://localhost:5000
+- Streamlit Interface: http://localhost:8501
 │   │   ├── accessories.py  # Accessory management
-│   │   ├── fitting.py      # Try-on algorithms
+## 📂 Project Structure
 │   │   └── renderer.py     # Final rendering
 │   │
 │   └── utils/              # Utility functions
-│       ├── __init__.py
-│       ├── image_utils.py  # Image manipulation utilities
-│       └── ui_helpers.py   # UI helper functions
+├── app.py                  # Main Streamlit application
+├── server.py               # Combined Flask + Streamlit server
+├── requirements.txt        # Project dependencies
 │
-├── data/
-│   ├── accessories/        # Accessory models and images
-│   ├── models/             # Pre-trained models
-│   └── samples/            # Sample images for testing
+├── web/                    # JavaScript Web UI
+│   ├── index.html          # Main HTML
+│   ├── css/                # Stylesheets
+│   ├── js/                 # JavaScript files
+│   └── assets/             # Images and static assets
 │
-└── tests/                  # Unit and integration tests
-    └── __init__.py
-```
-
-## License
-
-[MIT License](LICENSE)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+├── src/                    # Python backend modules
+│   ├── avatar_generator/   # Avatar creation components
+│   │   ├── capture.py      # Camera capture
+│   │   ├── processor.py    # Image processing
+│   │   └── generator.py    # Avatar generation
+│   │
+│   ├── virtual_tryon/      # Try-on functionality
+│   │   ├── accessories.py  # Accessory management
+│   │   ├── fitting.py      # Virtual fitting
+│   │   └── renderer.py     # Final rendering
