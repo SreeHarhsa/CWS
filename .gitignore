@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Streamlit specific
+.streamlit/
+
+# Project specific
+data/models/*
+!data/models/.gitkeep
+data/accessories/*
+!data/accessories/.gitkeep
+data/samples/*
+!data/samples/.gitkeep
+
+# Logs
+*.log
+
+# Test and cache directories
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Media files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.avi
+*.mov
+*.webm
+*.webp
+
+# Exceptions for sample assets
+!data/samples/*.jpg
+!data/samples/*.png
+!data/accessories/*/*.png
+!data/accessories/*/*.jpg
